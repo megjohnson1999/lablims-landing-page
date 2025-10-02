@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LabLIMS - Modern Laboratory Management Software</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 0 2rem;
+            color: white;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            font-weight: 300;
+            opacity: 0.95;
+        }
+
+        .hero {
+            background: white;
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .hero h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #667eea;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .feature {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .feature h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .feature p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        .demos {
+            background: white;
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .demos h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #667eea;
+            text-align: center;
+        }
+
+        .demo-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .demo-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .demo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .demo-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .demo-card p {
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .demo-btn {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 0.8rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .demo-btn:hover {
+            background: #f0f0f0;
+        }
+
+        .demo-btn.coming-soon {
+            background: rgba(255,255,255,0.3);
+            color: white;
+            cursor: not-allowed;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            padding: 2rem 0;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .tagline {
+                font-size: 1.1rem;
+            }
+
+            .hero, .demos {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>LabLIMS</h1>
+            <p class="tagline">Modern Laboratory Management Software</p>
+        </header>
+
+        <div class="hero">
+            <h2>Streamline Your Lab Operations</h2>
+            <p>LabLIMS is a comprehensive laboratory information management system designed for modern research labs. Track specimens, manage inventory, coordinate experiments, and maintain compliance - all in one integrated platform.</p>
+
+            <div class="features">
+                <div class="feature">
+                    <h3>🔬 Specimen Tracking</h3>
+                    <p>Track biological specimens through complete workflows with barcode integration</p>
+                </div>
+                <div class="feature">
+                    <h3>📊 Patient Management</h3>
+                    <p>Manage patient information with clinical data and secure record keeping</p>
+                </div>
+                <div class="feature">
+                    <h3>📦 Inventory Control</h3>
+                    <p>Track reagents and supplies with automated alerts for low stock and expiration</p>
+                </div>
+                <div class="feature">
+                    <h3>📝 Protocol Library</h3>
+                    <p>Store and manage lab protocols with AI-powered extraction capabilities</p>
+                </div>
+                <div class="feature">
+                    <h3>🧪 Experiment Tracking</h3>
+                    <p>Document experiments with automatic inventory consumption tracking</p>
+                </div>
+                <div class="feature">
+                    <h3>🔐 Audit Logging</h3>
+                    <p>Complete change history for regulatory compliance and quality assurance</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="demos">
+            <h2>Try Our Interactive Demos</h2>
+            <div class="demo-cards">
+                <div class="demo-card">
+                    <h3>Clinical Research Edition</h3>
+                    <p>Explore our clinical LIMS with realistic patient data, specimen tracking, and diagnostic workflows</p>
+                    <a href="#" class="demo-btn" id="clinical-demo-btn">Launch Clinical Demo</a>
+                </div>
+
+                <div class="demo-card">
+                    <h3>Animal Research Edition</h3>
+                    <p>Experience our animal research LIMS with breeding colonies, experimental protocols, and housing management</p>
+                    <span class="demo-btn coming-soon">Coming Soon</span>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 LabLIMS. Modern Laboratory Management Software.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Update this URL after Railway deployment
+        const CLINICAL_DEMO_URL = 'https://your-railway-url.railway.app';
+
+        document.getElementById('clinical-demo-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            if (CLINICAL_DEMO_URL === 'https://your-railway-url.railway.app') {
+                alert('Demo deployment in progress. Please check back soon!');
+            } else {
+                window.open(CLINICAL_DEMO_URL, '_blank');
+            }
+        });
+    </script>
+</body>
+</html>
