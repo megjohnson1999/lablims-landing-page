@@ -156,6 +156,47 @@
             cursor: not-allowed;
         }
 
+        .contact {
+            background: white;
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .contact-text {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 3rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
         footer {
             text-align: center;
             color: white;
@@ -229,9 +270,15 @@
                 <div class="demo-card">
                     <h3>Animal Research Edition</h3>
                     <p>Experience our animal research LIMS with breeding colonies, experimental protocols, and housing management</p>
-                    <span class="demo-btn coming-soon">Coming Soon</span>
+                    <a href="#" class="demo-btn" id="animal-demo-btn">Launch Animal Demo</a>
                 </div>
             </div>
+        </div>
+
+        <div class="contact">
+            <h2>Get Started with LabLIMS</h2>
+            <p class="contact-text">Interested in bringing modern lab management to your research facility? We'd love to hear from you.</p>
+            <a href="mailto:megan.j@wustl.edu" class="contact-btn">Contact Us</a>
         </div>
 
         <footer>
@@ -242,6 +289,7 @@
     <script>
         // Update this URL after Railway deployment
         const CLINICAL_DEMO_URL = 'https://your-railway-url.railway.app';
+        const ANIMAL_DEMO_URL = 'https://web-production-3d1c7.up.railway.app';
 
         document.getElementById('clinical-demo-btn').addEventListener('click', function(e) {
             e.preventDefault();
@@ -250,6 +298,11 @@
             } else {
                 window.open(CLINICAL_DEMO_URL, '_blank');
             }
+        });
+
+        document.getElementById('animal-demo-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.open(ANIMAL_DEMO_URL, '_blank');
         });
     </script>
 </body>
