@@ -5,6 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LabLIMS - Enterprise Laboratory Management Software | Clinical & Research LIMS</title>
     <style>
+        :root {
+            --background: 0 0% 100%;
+            --foreground: 222.2 84% 4.9%;
+            --card: 0 0% 100%;
+            --card-foreground: 222.2 84% 4.9%;
+            --primary: 222.2 47.4% 11.2%;
+            --primary-foreground: 210 40% 98%;
+            --secondary: 210 40% 96.1%;
+            --secondary-foreground: 222.2 47.4% 11.2%;
+            --muted: 210 40% 96.1%;
+            --muted-foreground: 215.4 16.3% 46.9%;
+            --accent: 210 40% 96.1%;
+            --accent-foreground: 222.2 47.4% 11.2%;
+            --border: 214.3 31.8% 91.4%;
+            --radius: 0.5rem;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,303 +29,418 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            color: hsl(var(--foreground));
+            background: hsl(var(--background));
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 0 2rem;
         }
 
+        /* Header */
         header {
-            text-align: center;
-            padding: 3rem 0 2rem;
-            color: white;
+            border-bottom: 1px solid hsl(var(--border));
+            padding: 1.5rem 0;
+            background: hsl(var(--background));
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(8px);
+            background: hsla(var(--background), 0.8);
         }
 
-        h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .tagline {
-            font-size: 1.3rem;
-            font-weight: 300;
-            opacity: 0.95;
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: hsl(var(--foreground));
+            letter-spacing: -0.02em;
         }
 
-        .hero {
-            background: white;
-            border-radius: 12px;
-            padding: 3rem;
-            margin: 2rem 0;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-        }
-
-        .hero h2 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: #667eea;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            color: #555;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .feature {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 8px;
-            border-left: 4px solid #667eea;
-        }
-
-        .feature h3 {
-            color: #667eea;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-
-        .feature p {
+        .nav-link {
+            color: hsl(var(--muted-foreground));
+            text-decoration: none;
             font-size: 0.95rem;
-            color: #666;
+            transition: color 0.2s;
         }
 
-        .demos {
-            background: white;
-            border-radius: 12px;
-            padding: 3rem;
-            margin: 2rem 0;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        .nav-link:hover {
+            color: hsl(var(--foreground));
         }
 
-        .demos h2 {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            color: #667eea;
+        /* Hero Section */
+        .hero {
+            padding: 5rem 0 4rem;
             text-align: center;
         }
 
-        .demo-cards {
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: hsl(var(--foreground));
+        }
+
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: hsl(var(--muted-foreground));
+            max-width: 700px;
+            margin: 0 auto 1rem;
+        }
+
+        .hero .description {
+            font-size: 1.125rem;
+            color: hsl(var(--muted-foreground));
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border-radius: var(--radius);
+            text-decoration: none;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background: hsl(var(--primary));
+            color: hsl(var(--primary-foreground));
+            box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+        }
+
+        .btn-primary:hover {
+            background: hsl(var(--primary) / 0.9);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+
+        .btn-secondary {
+            background: hsl(var(--secondary));
+            color: hsl(var(--secondary-foreground));
+            border: 1px solid hsl(var(--border));
+        }
+
+        .btn-secondary:hover {
+            background: hsl(var(--accent));
+        }
+
+        /* Features Grid */
+        .features {
+            padding: 4rem 0;
+            border-top: 1px solid hsl(var(--border));
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-description {
+            font-size: 1.125rem;
+            color: hsl(var(--muted-foreground));
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
 
+        .feature-card {
+            background: hsl(var(--card));
+            border: 1px solid hsl(var(--border));
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            transition: all 0.2s;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            border-color: hsl(var(--primary) / 0.5);
+        }
+
+        .feature-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: hsl(var(--foreground));
+        }
+
+        .feature-description {
+            font-size: 0.95rem;
+            color: hsl(var(--muted-foreground));
+            line-height: 1.6;
+        }
+
+        /* Demos Section */
+        .demos {
+            padding: 4rem 0;
+            background: hsl(var(--muted));
+        }
+
+        .demo-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
         .demo-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 2.5rem;
-            border-radius: 10px;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
+            background: hsl(var(--card));
+            border: 1px solid hsl(var(--border));
+            border-radius: var(--radius);
+            padding: 2rem;
+            transition: all 0.2s;
         }
 
         .demo-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            transform: translateY(-2px);
         }
 
         .demo-card h3 {
             font-size: 1.5rem;
+            font-weight: 600;
             margin-bottom: 1rem;
+            color: hsl(var(--foreground));
         }
 
         .demo-card p {
+            font-size: 1rem;
+            color: hsl(var(--muted-foreground));
             margin-bottom: 1.5rem;
-            opacity: 0.9;
+            line-height: 1.6;
         }
 
-        .demo-btn {
-            display: inline-block;
-            background: white;
-            color: #667eea;
-            padding: 0.8rem 2rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.3s ease;
-        }
-
-        .demo-btn:hover {
-            background: #f0f0f0;
-        }
-
-        .demo-btn.coming-soon {
-            background: rgba(255,255,255,0.3);
-            color: white;
-            cursor: not-allowed;
-        }
-
+        /* Contact Section */
         .contact {
-            background: white;
-            border-radius: 12px;
-            padding: 3rem;
-            margin: 2rem 0;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            padding: 5rem 0;
             text-align: center;
+            border-top: 1px solid hsl(var(--border));
         }
 
         .contact h2 {
-            font-size: 2rem;
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
             margin-bottom: 1rem;
-            color: #667eea;
         }
 
         .contact-text {
-            font-size: 1.1rem;
-            color: #555;
+            font-size: 1.125rem;
+            color: hsl(var(--muted-foreground));
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+
+        .badges {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
             margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
-        .contact-btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1rem 3rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background: hsl(var(--secondary));
+            border: 1px solid hsl(var(--border));
+            border-radius: calc(var(--radius) - 2px);
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: hsl(var(--foreground));
         }
 
-        .contact-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
-        }
-
+        /* Footer */
         footer {
+            border-top: 1px solid hsl(var(--border));
+            padding: 3rem 0;
             text-align: center;
-            color: white;
-            padding: 2rem 0;
-            opacity: 0.9;
+            color: hsl(var(--muted-foreground));
         }
 
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
+            .hero h1 {
+                font-size: 2.5rem;
             }
 
-            .tagline {
-                font-size: 1.1rem;
+            .hero .subtitle {
+                font-size: 1.125rem;
             }
 
-            .hero, .demos {
-                padding: 2rem;
+            .features-grid,
+            .demo-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>LabLIMS</h1>
-            <p class="tagline">Enterprise Laboratory Management Software</p>
-            <p style="color: rgba(255,255,255,0.85); font-size: 1.05rem; margin-top: 0.5rem;">Production-ready LIMS for clinical, animal research, and biotech laboratories</p>
-        </header>
-
-        <div class="hero">
-            <h2>Streamline Your Lab Operations</h2>
-            <p>LabLIMS is a production-ready laboratory information management system designed for modern research labs. Track specimens, manage inventory, coordinate experiments, and maintain compliance - all in one integrated platform.</p>
-
-            <div class="features">
-                <div class="feature">
-                    <h3>🔬 Specimen Tracking</h3>
-                    <p>Track biological specimens through complete workflows with barcode integration</p>
-                </div>
-                <div class="feature">
-                    <h3>📊 Sample Source Tracking</h3>
-                    <p>Manage clinical patients, research animals, or environmental sources with flexible metadata</p>
-                </div>
-                <div class="feature">
-                    <h3>📦 Inventory Control</h3>
-                    <p>Track reagents and supplies with automated alerts for low stock and expiration</p>
-                </div>
-                <div class="feature">
-                    <h3>📝 Protocol Library</h3>
-                    <p>Store and manage lab protocols with standardized procedures</p>
-                </div>
-                <div class="feature">
-                    <h3>🧪 Experiment Tracking</h3>
-                    <p>Document experiments with automatic inventory consumption tracking</p>
-                </div>
-                <div class="feature">
-                    <h3>🔐 Audit Logging</h3>
-                    <p>Complete change history for regulatory compliance and quality assurance</p>
-                </div>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">LabLIMS</div>
+                <a href="mailto:megan.j@wustl.edu" class="nav-link">Contact</a>
             </div>
         </div>
+    </header>
 
-        <div class="demos">
-            <h2>See LabLIMS in Action</h2>
-            <p style="text-align: center; color: #666; font-size: 1.1rem; margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">
-                Explore fully-functional demo environments showcasing real-world laboratory workflows. No signup required.
-            </p>
-            <div class="demo-cards">
-                <div class="demo-card">
-                    <h3>Clinical Diagnostics</h3>
-                    <p>Full-featured clinical LIMS with patient management, specimen tracking, diagnostic workflows, and compliance-ready audit trails</p>
-                    <a href="#" class="demo-btn" id="clinical-demo-btn">Explore Clinical Edition →</a>
-                </div>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Enterprise Laboratory Management Software</h1>
+                <p class="subtitle">Production-ready LIMS for clinical, animal research, and biotech laboratories</p>
+                <p class="description">LabLIMS is a comprehensive laboratory information management system designed for modern research labs. Track specimens, manage inventory, coordinate experiments, and maintain compliance - all in one integrated platform.</p>
 
-                <div class="demo-card">
-                    <h3>Animal Research</h3>
-                    <p>Complete animal facility management with breeding colonies, IACUC protocol tracking, housing hierarchy, and research study coordination</p>
-                    <a href="#" class="demo-btn" id="animal-demo-btn">Explore Animal Edition →</a>
+                <div class="cta-buttons">
+                    <a href="mailto:megan.j@wustl.edu" class="btn btn-primary">Schedule a Consultation</a>
+                    <a href="#demos" class="btn btn-secondary">View Demos</a>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="contact">
-            <h2>Ready to Modernize Your Lab?</h2>
-            <p class="contact-text">Schedule a personalized consultation to see how LabLIMS can transform your laboratory operations. We'll walk you through deployment options, customization capabilities, and pricing tailored to your facility.</p>
-            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
-                <div style="background: #f8f9fa; padding: 0.5rem 1.5rem; border-radius: 6px; color: #667eea; font-weight: 600;">✓ Production-Ready</div>
-                <div style="background: #f8f9fa; padding: 0.5rem 1.5rem; border-radius: 6px; color: #667eea; font-weight: 600;">✓ Compliance-Focused</div>
-                <div style="background: #f8f9fa; padding: 0.5rem 1.5rem; border-radius: 6px; color: #667eea; font-weight: 600;">✓ Custom Deployment</div>
-                <div style="background: #f8f9fa; padding: 0.5rem 1.5rem; border-radius: 6px; color: #667eea; font-weight: 600;">✓ Enterprise Support</div>
+        <section class="features">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Complete Laboratory Management</h2>
+                    <p class="section-description">Everything you need to run an efficient, compliant research laboratory</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3 class="feature-title">Specimen Tracking</h3>
+                        <p class="feature-description">Track biological specimens through complete workflows with barcode integration</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3 class="feature-title">Sample Source Tracking</h3>
+                        <p class="feature-description">Manage clinical patients, research animals, or environmental sources with flexible metadata</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3 class="feature-title">Inventory Control</h3>
+                        <p class="feature-description">Track reagents and supplies with automated alerts for low stock and expiration</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3 class="feature-title">Protocol Library</h3>
+                        <p class="feature-description">Store and manage lab protocols with standardized procedures</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3 class="feature-title">Experiment Tracking</h3>
+                        <p class="feature-description">Document experiments with automatic inventory consumption tracking</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3 class="feature-title">Audit Logging</h3>
+                        <p class="feature-description">Complete change history for regulatory compliance and quality assurance</p>
+                    </div>
+                </div>
             </div>
-            <a href="mailto:megan.j@wustl.edu" class="contact-btn">Schedule a Consultation</a>
-        </div>
+        </section>
 
-        <footer>
+        <section class="demos" id="demos">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">See LabLIMS in Action</h2>
+                    <p class="section-description">Explore fully-functional demo environments showcasing real-world laboratory workflows. No signup required.</p>
+                </div>
+
+                <div class="demo-cards">
+                    <div class="demo-card">
+                        <h3>Clinical Diagnostics</h3>
+                        <p>Full-featured clinical LIMS with patient management, specimen tracking, diagnostic workflows, and compliance-ready audit trails</p>
+                        <a href="#" class="btn btn-primary" id="clinical-demo-btn" style="width: 100%;">Explore Clinical Edition →</a>
+                    </div>
+
+                    <div class="demo-card">
+                        <h3>Animal Research</h3>
+                        <p>Complete animal facility management with breeding colonies, IACUC protocol tracking, housing hierarchy, and research study coordination</p>
+                        <a href="#" class="btn btn-primary" id="animal-demo-btn" style="width: 100%;">Explore Animal Edition →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact">
+            <div class="container">
+                <h2>Ready to Modernize Your Lab?</h2>
+                <p class="contact-text">Schedule a personalized consultation to see how LabLIMS can transform your laboratory operations. We'll walk you through deployment options, customization capabilities, and pricing tailored to your facility.</p>
+
+                <div class="badges">
+                    <span class="badge">Production-Ready</span>
+                    <span class="badge">Compliance-Focused</span>
+                    <span class="badge">Custom Deployment</span>
+                    <span class="badge">Enterprise Support</span>
+                </div>
+
+                <a href="mailto:megan.j@wustl.edu" class="btn btn-primary">Schedule a Consultation</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
             <p>&copy; 2025 LabLIMS. Enterprise Laboratory Management Software.</p>
-            <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.8;">Cloud-hosted or on-premise deployment options available.</p>
-        </footer>
-    </div>
+            <p style="font-size: 0.875rem; margin-top: 0.5rem;">Cloud-hosted or on-premise deployment options available.</p>
+        </div>
+    </footer>
 
     <script>
-        // Update this URL after Railway deployment
         const CLINICAL_DEMO_URL = 'https://lablims-clinical-demo-production.up.railway.app';
         const ANIMAL_DEMO_URL = 'https://web-production-3d1c7.up.railway.app';
 
         document.getElementById('clinical-demo-btn').addEventListener('click', function(e) {
             e.preventDefault();
-            if (CLINICAL_DEMO_URL === 'https://your-railway-url.railway.app') {
-                alert('Demo deployment in progress. Please check back soon!');
-            } else {
-                window.open(CLINICAL_DEMO_URL, '_blank');
-            }
+            window.open(CLINICAL_DEMO_URL, '_blank');
         });
 
         document.getElementById('animal-demo-btn').addEventListener('click', function(e) {
