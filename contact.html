@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - LabLIMS | Schedule a Consultation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">LabLIMS</a>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">☰</button>
+                <nav class="nav">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="features.html" class="nav-link">Features</a>
+                    <a href="solutions.html" class="nav-link">Solutions</a>
+                    <a href="pricing.html" class="nav-link">Pricing</a>
+                    <a href="demos.html" class="nav-link">Demos</a>
+                    <a href="contact.html" class="nav-link active">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Get in Touch</h1>
+                <p class="subtitle">Schedule a consultation to see how LabLIMS can transform your laboratory operations</p>
+                <p class="description">Tell us about your laboratory's needs and we'll follow up with a personalized demonstration and proposal.</p>
+            </div>
+        </section>
+
+        <!-- Contact Form -->
+        <section class="section">
+            <div class="container">
+                <div style="max-width: 700px; margin: 0 auto;">
+                    <form action="https://formspree.io/f/myznnngj" method="POST" class="contact-form">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Name *</label>
+                            <input type="text" id="name" name="name" class="form-input" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email *</label>
+                            <input type="email" id="email" name="email" class="form-input" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="organization" class="form-label">Organization *</label>
+                            <input type="text" id="organization" name="organization" class="form-input" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lab-type" class="form-label">Lab Type *</label>
+                            <select id="lab-type" name="lab_type" class="form-select" required>
+                                <option value="">Select your lab type...</option>
+                                <option value="clinical">Clinical Diagnostics</option>
+                                <option value="animal">Animal Research</option>
+                                <option value="biotech">Biotech R&D</option>
+                                <option value="environmental">Environmental Testing</option>
+                                <option value="academic">Academic Research</option>
+                                <option value="core-facility">Core Facility</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lab-size" class="form-label">Lab Size *</label>
+                            <select id="lab-size" name="lab_size" class="form-select" required>
+                                <option value="">Select number of users...</option>
+                                <option value="1-5">1-5 users</option>
+                                <option value="6-20">6-20 users</option>
+                                <option value="21-50">21-50 users</option>
+                                <option value="50+">50+ users</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="interest" class="form-label">Primary Interest *</label>
+                            <select id="interest" name="primary_interest" class="form-select" required>
+                                <option value="">What can we help with?</option>
+                                <option value="demo">Schedule a Demo</option>
+                                <option value="pricing">Discuss Pricing</option>
+                                <option value="technical">Technical Questions</option>
+                                <option value="implementation">Implementation & Timeline</option>
+                                <option value="general">General Inquiry</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about your laboratory's specific needs or any questions you have..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                    </form>
+
+                    <div style="margin-top: 2rem; padding: 1.5rem; background: hsl(var(--muted)); border-radius: var(--radius); text-align: center;">
+                        <p style="font-size: 0.95rem; color: hsl(var(--muted-foreground)); margin-bottom: 0.5rem;">
+                            Or email us directly at
+                        </p>
+                        <a href="mailto:megan.j@wustl.edu" style="font-size: 1.125rem; font-weight: 600; color: hsl(var(--primary)); text-decoration: none;">
+                            megan.j@wustl.edu
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional Info -->
+        <section class="section bg-muted">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">What Happens Next?</h2>
+                    <p class="section-description">Our consultation process is designed to understand your needs and show you exactly how LabLIMS can help</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">1️⃣</div>
+                        <h3 class="feature-title">Initial Consultation</h3>
+                        <p class="feature-description">We'll schedule a call to learn about your laboratory's workflow, challenges, and requirements. This helps us understand how to best customize LabLIMS for your needs.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">2️⃣</div>
+                        <h3 class="feature-title">Personalized Demo</h3>
+                        <p class="feature-description">We'll walk you through LabLIMS features most relevant to your laboratory, showing how data structures and workflows can be customized for your specific use case.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">3️⃣</div>
+                        <h3 class="feature-title">Custom Proposal</h3>
+                        <p class="feature-description">Based on your requirements, we'll provide a detailed proposal including recommended configuration, implementation timeline, and pricing tailored to your facility.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose LabLIMS -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Why Choose LabLIMS?</h2>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🔧</div>
+                        <h3 class="feature-title">Fully Customizable</h3>
+                        <p class="feature-description">Adapt to your workflow, not the other way around. Define your own data structures, fields, and processes to match your laboratory's unique needs.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">✅</div>
+                        <h3 class="feature-title">Production-Ready</h3>
+                        <p class="feature-description">Built on proven technology with comprehensive audit trails, security features, and compliance capabilities for regulated environments.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">🚀</div>
+                        <h3 class="feature-title">Fast Implementation</h3>
+                        <p class="feature-description">Get up and running quickly with cloud hosting or on-premise deployment. We handle the technical setup so you can focus on your research.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">💬</div>
+                        <h3 class="feature-title">Dedicated Support</h3>
+                        <p class="feature-description">Ongoing support from initial implementation through daily operations. We're here to ensure LabLIMS continues to meet your evolving needs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 LabLIMS. Enterprise Laboratory Management Software.</p>
+            <p style="font-size: 0.875rem; margin-top: 0.5rem;">Cloud-hosted or on-premise deployment options available.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
