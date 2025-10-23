@@ -15,6 +15,42 @@
     --radius: 0.5rem;
 }
 
+/* Dark mode - defaults to system preference */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --background: 222.2 84% 4.9%;
+        --foreground: 210 40% 98%;
+        --card: 222.2 47.4% 11.2%;
+        --card-foreground: 210 40% 98%;
+        --primary: 210 40% 98%;
+        --primary-foreground: 222.2 47.4% 11.2%;
+        --secondary: 217.2 32.6% 17.5%;
+        --secondary-foreground: 210 40% 98%;
+        --muted: 217.2 32.6% 17.5%;
+        --muted-foreground: 215 20.2% 65.1%;
+        --accent: 217.2 32.6% 17.5%;
+        --accent-foreground: 210 40% 98%;
+        --border: 217.2 32.6% 17.5%;
+    }
+}
+
+/* Explicit dark mode when toggled */
+:root[data-theme="dark"] {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 47.4% 11.2%;
+    --card-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -28,6 +64,7 @@ body {
     background: hsl(var(--background));
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -72,16 +109,63 @@ header {
     color: hsl(var(--muted-foreground));
     text-decoration: none;
     font-size: 0.95rem;
-    transition: color 0.2s;
+    transition: all 0.2s ease;
     font-weight: 500;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: hsl(var(--foreground));
+    transition: width 0.2s ease;
 }
 
 .nav-link:hover {
     color: hsl(var(--foreground));
+    transform: translateY(-1px);
+}
+
+.nav-link:hover::after {
+    width: 100%;
 }
 
 .nav-link.active {
     color: hsl(var(--foreground));
+}
+
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+    background: hsl(var(--secondary));
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    padding: 0.5rem;
+    cursor: pointer;
+    color: hsl(var(--foreground));
+    font-size: 1.25rem;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+.theme-toggle:hover {
+    background: hsl(var(--accent));
+    transform: scale(1.05);
+}
+
+.theme-toggle:active {
+    transform: scale(0.95);
 }
 
 /* Mobile menu toggle */
@@ -169,7 +253,7 @@ header {
     font-weight: 500;
     border-radius: var(--radius);
     text-decoration: none;
-    transition: all 0.2s;
+    transition: all 0.2s ease;
     border: 1px solid transparent;
     cursor: pointer;
 }
@@ -183,6 +267,11 @@ header {
 .btn-primary:hover {
     background: hsl(var(--primary) / 0.9);
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    transform: translateY(-2px);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
 }
 
 .btn-secondary {
@@ -193,6 +282,12 @@ header {
 
 .btn-secondary:hover {
     background: hsl(var(--accent));
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px -1px rgb(0 0 0 / 0.1);
+}
+
+.btn-secondary:active {
+    transform: translateY(0);
 }
 
 /* Section Styling */
@@ -236,17 +331,24 @@ header {
     border: 1px solid hsl(var(--border));
     border-radius: var(--radius);
     padding: 1.5rem;
-    transition: all 0.2s;
+    transition: all 0.3s ease;
 }
 
 .feature-card:hover {
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     border-color: hsl(var(--primary) / 0.5);
+    transform: translateY(-4px);
 }
 
 .feature-icon {
     font-size: 2rem;
     margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.feature-card:hover .feature-icon {
+    transform: scale(1.1) rotate(5deg);
 }
 
 .feature-title {
@@ -311,14 +413,14 @@ header {
     border: 2px solid hsl(var(--border));
     border-radius: var(--radius);
     padding: 2rem;
-    transition: all 0.2s;
+    transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
 }
 
 .pricing-card:hover {
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-    transform: translateY(-4px);
+    transform: translateY(-6px);
     border-color: hsl(var(--primary) / 0.5);
 }
 
@@ -392,8 +494,14 @@ header {
     border-radius: var(--radius);
     background: hsl(var(--background));
     color: hsl(var(--foreground));
-    transition: all 0.2s;
+    transition: all 0.2s ease;
     font-family: inherit;
+}
+
+.form-input:hover,
+.form-select:hover,
+.form-textarea:hover {
+    border-color: hsl(var(--muted-foreground) / 0.5);
 }
 
 .form-input:focus,
@@ -402,6 +510,7 @@ header {
     outline: none;
     border-color: hsl(var(--primary));
     box-shadow: 0 0 0 3px hsl(var(--primary) / 0.1);
+    transform: translateY(-1px);
 }
 
 .form-textarea {
@@ -428,6 +537,12 @@ header {
     font-size: 0.875rem;
     font-weight: 500;
     color: hsl(var(--foreground));
+    transition: all 0.2s ease;
+}
+
+.badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px -1px rgb(0 0 0 / 0.1);
 }
 
 /* Demo Cards */
@@ -442,12 +557,13 @@ header {
     border: 1px solid hsl(var(--border));
     border-radius: var(--radius);
     padding: 2rem;
-    transition: all 0.2s;
+    transition: all 0.3s ease;
 }
 
 .demo-card:hover {
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-    transform: translateY(-2px);
+    transform: translateY(-4px);
+    border-color: hsl(var(--primary) / 0.3);
 }
 
 .demo-card h3 {
@@ -474,6 +590,18 @@ footer {
 
 footer p {
     margin-bottom: 0.5rem;
+}
+
+/* Smooth theme transitions for all elements */
+* {
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+}
+
+/* But maintain specific transition properties for interactive elements */
+.btn, .nav-link, .feature-card, .pricing-card, .demo-card, .screenshot-item, .badge {
+    transition: all 0.3s ease;
 }
 
 /* Responsive */

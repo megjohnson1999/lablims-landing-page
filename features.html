@@ -11,15 +11,20 @@
         <div class="container">
             <div class="header-content">
                 <a href="index.html" class="logo">LabLIMS</a>
-                <button class="mobile-menu-toggle" aria-label="Toggle menu">☰</button>
-                <nav class="nav">
-                    <a href="index.html" class="nav-link">Home</a>
-                    <a href="features.html" class="nav-link active">Features</a>
-                    <a href="solutions.html" class="nav-link">Solutions</a>
-                    <a href="pricing.html" class="nav-link">Pricing</a>
-                    <a href="demos.html" class="nav-link">Demos</a>
-                    <a href="contact.html" class="nav-link">Contact</a>
-                </nav>
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <nav class="nav">
+                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="features.html" class="nav-link active">Features</a>
+                        <a href="solutions.html" class="nav-link">Solutions</a>
+                        <a href="pricing.html" class="nav-link">Pricing</a>
+                        <a href="demos.html" class="nav-link">Demos</a>
+                        <a href="contact.html" class="nav-link">Contact</a>
+                    </nav>
+                    <button class="theme-toggle" aria-label="Toggle dark mode">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                    <button class="mobile-menu-toggle" aria-label="Toggle menu">☰</button>
+                </div>
             </div>
         </div>
     </header>
@@ -213,6 +218,42 @@
         // Mobile menu toggle
         document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
             document.querySelector('.nav').classList.toggle('active');
+        });
+
+        // Theme toggle functionality
+        const themeToggle = document.querySelector('.theme-toggle');
+        const themeIcon = document.querySelector('.theme-icon');
+        const root = document.documentElement;
+
+        // Check for saved theme preference or default to system preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            root.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            updateThemeIcon('dark');
+        }
+
+        // Theme toggle click handler
+        themeToggle.addEventListener('click', function() {
+            const currentTheme = root.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            root.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        // Update icon based on theme
+        function updateThemeIcon(theme) {
+            themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+        }
+
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                updateThemeIcon(e.matches ? 'dark' : 'light');
+            }
         });
     </script>
 </body>
